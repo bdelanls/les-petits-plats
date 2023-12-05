@@ -1,0 +1,20 @@
+// Fonts
+$anton: 'Anton', sans-serif;
+$manrope: 'Manrope', sans-serif;
+
+h1, h2, h3, h4, h5, h6 { font-weight: normal;}
+
+// Colors
+$primary: #FFD15B;
+$grey: #7A7A7A;
+$light-grey: #C6C6C6;
+$white: #ffffff;
+$black: #000000;
+
+// base
+
+body {
+    font-family: $manrope;
+    position: relative;
+    background-color: #EDEDED;
+}

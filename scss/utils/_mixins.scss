@@ -1,0 +1,22 @@
+// mixin
+
+// mobile -> max 768px
+// tablet -> min 769px max 1023px
+// desktop -> min 1024px max 1440px
+
+@mixin mobile() {
+	@media only screen and (max-width: 768px) {
+		@content;
+	}
+}
+
+@mixin tablet() {
+	@media only screen and (min-width: 769px) and (max-width: 1023px) {
+		@content;
+	}
+}
+@mixin desktop() {
+	@media only screen and (min-width: 1024px) and (max-width: 1440px){
+		@content;
+	}
+}

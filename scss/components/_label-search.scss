@@ -1,0 +1,44 @@
+
+
+.labelsearch {
+
+    width: max-content;
+    max-width: 205px;
+    height: 53px;
+    background-color: $primary;
+    border-radius: 10px;
+    padding: 0 40px 0 16px;
+    display: flex;
+    align-items: center;
+    
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+    &__title {
+        font-size: em(14);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+
+    &__close-button {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border: none;
+        background-color: initial;
+        cursor: pointer;
+        padding: 0;
+        height: 51px;
+        width: 40px;
+
+    }
+
+    &__close-icon {
+        height: 1.3em;
+        width: 1.3em;
+    }
+}

@@ -1,4 +1,19 @@
-/**
-/* Les petits plats
-*/
+/**********************************
+/* Style du site Les petits plats
+***********************************/
+
+
+// utils
+@import "utils/functions";
+@import "utils/mixins";
+// base
+@import "base/reset";
+@import "base/typography";
+@import "base/variables";
+// components
+@import "components/search-menu";
+@import "components/label-search";
+// layouts
+@import "layouts/header";
+@import "layouts/main";
 

@@ -1,0 +1,9 @@
+// Conversion px en em ou rem
+@function em($size, $base: 16) {
+	@return 0em + calc($size / $base);
+}
+@function rem($size, $base: 16) {
+	@return 0rem + calc($size / $base);
+}
+
+

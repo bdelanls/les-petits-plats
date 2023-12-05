@@ -1,0 +1,160 @@
+
+.search-dropdowns {
+    width: max-content;
+    display: flex;
+    gap: 60px;
+
+    @include tablet {
+        gap: 20px;
+    }
+
+    @include mobile {
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+    }
+
+}
+.search-dropdown {
+
+    width: 195px;
+    //max-height: 315px;
+    background-color: $white;
+    border-radius: 11px;
+    height: max-content;
+
+    @include mobile {
+        width: 100%;
+    }
+
+    &__button {
+        width: 100%;
+        height: 56px;
+        padding: 0 16px;
+        border: 0;
+        background-color: inherit;
+        border-radius: inherit;
+        text-align: left;
+        font-family: $manrope;
+        font-size: em(16);
+        font-weight: 400;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+
+        &::after {
+            content: "";
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBkPSJNMjMzLjQgNDA2LjZjMTIuNSAxMi41IDMyLjggMTIuNSA0NS4zIDBsMTkyLTE5MmMxMi41LTEyLjUgMTIuNS0zMi44IDAtNDUuM3MtMzIuOC0xMi41LTQ1LjMgMEwyNTYgMzM4LjcgODYuNiAxNjkuNGMtMTIuNS0xMi41LTMyLjgtMTIuNS00NS4zIDBzLTEyLjUgMzIuOCAwIDQ1LjNsMTkyIDE5MnoiLz48L3N2Zz4=');
+            width: 1em;
+            height: 1em;
+            display: block;
+            background-size: cover;
+        }
+
+        .active &::after {
+            //background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBkPSJNMjMzLjQgMTA1LjRjMTIuNS0xMi41IDMyLjgtMTIuNSA0NS4zIDBsMTkyIDE5MmMxMi41IDEyLjUgMTIuNSAzMi44IDAgNDUuM3MtMzIuOCAxMi41LTQ1LjMgMEwyNTYgMTczLjMgODYuNiAzNDIuNmMtMTIuNSAxMi41LTMyLjggMTIuNS00NS4zIDBzLTEyLjUtMzIuOCAwLTQ1LjNsMTkyLTE5MnoiLz48L3N2Zz4=');
+            rotate: 180deg;
+        }
+
+
+    }
+
+    &__input-container {
+        display: none;
+    }
+    &.active &__input-container {
+        display: block;
+    }
+
+
+
+    &__menu {
+        padding: 0 16px;
+        position: relative;
+
+    }
+
+    &__input {
+        width: 100%;
+        border: 1px solid $light-grey;
+        padding: 7px 50px 7px 7px;
+        font-family: $manrope;
+        font-size: em(14);
+        color: $grey;
+        font-weight: 400;
+
+        &:focus-visible {
+            outline: none;
+        }
+
+        &-icon {
+            color: $light-grey;
+            height: 1em;
+            width: 1em;
+        }
+
+    }
+
+    &__search-button {
+        position: absolute;
+        bottom: 0;
+        right: 16px;
+        border: none;
+        background-color: inherit;
+        cursor: pointer;
+        padding: 0;
+        height: 35px;
+        width: 35px;
+
+        &:hover svg{
+            color: $grey;
+        }
+
+    }
+    
+    &__reset-button {
+        @extend .search-dropdown__search-button;
+        right: 35px;
+    }
+
+
+    &__list {
+        max-height: 200px;
+        overflow-y: scroll;
+        margin-top: 10px;
+
+    }
+
+    &__item {
+        font-family: $manrope;
+        font-size: em(14);
+        font-weight: 300;
+        padding: 9px 16px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        &:hover {
+            background-color: $primary;
+            cursor: pointer;
+        }
+
+        &.active {
+            background-color: $primary;
+            font-weight: 700;
+
+            &::after {
+                content: "";
+                background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMTYiIHdpZHRoPSIxNiIgdmlld0JveD0iMCAwIDUxMiA1MTIiPjxwYXRoIGQ9Ik0yNTYgNTEyQTI1NiAyNTYgMCAxIDAgMjU2IDBhMjU2IDI1NiAwIDEgMCAwIDUxMnpNMTc1IDE3NWM5LjQtOS40IDI0LjYtOS40IDMzLjkgMGw0NyA0NyA0Ny00N2M5LjQtOS40IDI0LjYtOS40IDMzLjkgMHM5LjQgMjQuNiAwIDMzLjlsLTQ3IDQ3IDQ3IDQ3YzkuNCA5LjQgOS40IDI0LjYgMCAzMy45cy0yNC42IDkuNC0zMy45IDBsLTQ3LTQ3LTQ3IDQ3Yy05LjQgOS40LTI0LjYgOS40LTMzLjkgMHMtOS40LTI0LjYgMC0zMy45bDQ3LTQ3LTQ3LTQ3Yy05LjQtOS40LTkuNC0yNC42IDAtMzMuOXoiLz48L3N2Zz4=');
+                width: 1em;
+                height: 1em;
+                display: block;
+                background-size: cover;
+            }
+        }
+
+    }
+}

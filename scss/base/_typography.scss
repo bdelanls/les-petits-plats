@@ -1,0 +1,49 @@
+
+
+/* anton-regular - latin */
+@font-face {
+    font-display: swap; 
+    font-family: 'Anton';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/assets/fonts/anton-v25-latin-regular.woff2') format('woff2'), 
+         url('/assets/fonts/anton-v25-latin-regular.ttf') format('truetype');
+}
+
+/* manrope-light - latin */
+@font-face {
+     font-display: swap; 
+     font-family: 'Manrope';
+     font-style: normal;
+     font-weight: 300;
+     src: url('/assets/fonts/Manrope-Light.ttf') format('truetype'); 
+   }
+
+/* manrope-regular - latin */
+@font-face {
+    font-display: swap; 
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/assets/fonts/Manrope-Regular.ttf') format('truetype'); 
+  }
+  
+  /* manrope-500 - latin */
+  @font-face {
+    font-display: swap; 
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 500;
+    src: url('/assets/fonts/Manrope-Medium.ttf') format('truetype'); 
+  }
+  
+  /* manrope-700 - latin */
+  @font-face {
+    font-display: swap; 
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/assets/fonts/Manrope-Bold.ttf') format('truetype'); 
+  }
+  
+  
