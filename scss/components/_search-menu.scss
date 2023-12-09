@@ -21,10 +21,16 @@
     //max-height: 315px;
     background-color: $white;
     border-radius: 11px;
-    height: max-content;
+    height: 56px;
+    overflow: hidden;
+    transition: all 0.3s;
 
     @include mobile {
         width: 100%;
+    }
+
+    &.active {
+        height: 315px;
     }
 
     &__button {
@@ -51,6 +57,7 @@
             height: 1em;
             display: block;
             background-size: cover;
+            transition: all 0.3s;
         }
 
         .active &::after {
@@ -124,6 +131,10 @@
         max-height: 200px;
         overflow-y: scroll;
         margin-top: 10px;
+        transition-delay: 1s;
+
+        .active & {
+        }
 
     }
 
@@ -146,14 +157,19 @@
             background-color: $primary;
             font-weight: 700;
 
-            &::after {
-                content: "";
-                background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMTYiIHdpZHRoPSIxNiIgdmlld0JveD0iMCAwIDUxMiA1MTIiPjxwYXRoIGQ9Ik0yNTYgNTEyQTI1NiAyNTYgMCAxIDAgMjU2IDBhMjU2IDI1NiAwIDEgMCAwIDUxMnpNMTc1IDE3NWM5LjQtOS40IDI0LjYtOS40IDMzLjkgMGw0NyA0NyA0Ny00N2M5LjQtOS40IDI0LjYtOS40IDMzLjkgMHM5LjQgMjQuNiAwIDMzLjlsLTQ3IDQ3IDQ3IDQ3YzkuNCA5LjQgOS40IDI0LjYgMCAzMy45cy0yNC42IDkuNC0zMy45IDBsLTQ3LTQ3LTQ3IDQ3Yy05LjQgOS40LTI0LjYgOS40LTMzLjkgMHMtOS40LTI0LjYgMC0zMy45bDQ3LTQ3LTQ3LTQ3Yy05LjQtOS40LTkuNC0yNC42IDAtMzMuOXoiLz48L3N2Zz4=');
-                width: 1em;
-                height: 1em;
-                display: block;
-                background-size: cover;
+            &:hover {
+
+                &::after {
+                    content: "";
+                    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMTYiIHdpZHRoPSIxNiIgdmlld0JveD0iMCAwIDUxMiA1MTIiPjxwYXRoIGQ9Ik0yNTYgNTEyQTI1NiAyNTYgMCAxIDAgMjU2IDBhMjU2IDI1NiAwIDEgMCAwIDUxMnpNMTc1IDE3NWM5LjQtOS40IDI0LjYtOS40IDMzLjkgMGw0NyA0NyA0Ny00N2M5LjQtOS40IDI0LjYtOS40IDMzLjkgMHM5LjQgMjQuNiAwIDMzLjlsLTQ3IDQ3IDQ3IDQ3YzkuNCA5LjQgOS40IDI0LjYgMCAzMy45cy0yNC42IDkuNC0zMy45IDBsLTQ3LTQ3LTQ3IDQ3Yy05LjQgOS40LTI0LjYgOS40LTMzLjkgMHMtOS40LTI0LjYgMC0zMy45bDQ3LTQ3LTQ3LTQ3Yy05LjQtOS40LTkuNC0yNC42IDAtMzMuOXoiLz48L3N2Zz4=');
+                    width: 1em;
+                    height: 1em;
+                    display: block;
+                    background-size: cover;
+                }
             }
+
+            
         }
 
     }

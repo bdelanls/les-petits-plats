@@ -126,12 +126,17 @@ body {
   width: 195px;
   background-color: #ffffff;
   border-radius: 11px;
-  height: max-content;
+  height: 56px;
+  overflow: hidden;
+  transition: all 0.3s;
 }
 @media only screen and (max-width: 768px) {
   .search-dropdown {
     width: 100%;
   }
+}
+.search-dropdown.active {
+  height: 315px;
 }
 .search-dropdown__button {
   width: 100%;
@@ -157,6 +162,7 @@ body {
   height: 1em;
   display: block;
   background-size: cover;
+  transition: all 0.3s;
 }
 .active .search-dropdown__button::after {
   rotate: 180deg;
@@ -209,6 +215,7 @@ body {
   max-height: 200px;
   overflow-y: scroll;
   margin-top: 10px;
+  transition-delay: 1s;
 }
 .search-dropdown__item {
   font-family: "Manrope", sans-serif;
@@ -228,7 +235,7 @@ body {
   background-color: #FFD15B;
   font-weight: 700;
 }
-.search-dropdown__item.active::after {
+.search-dropdown__item.active:hover::after {
   content: "";
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMTYiIHdpZHRoPSIxNiIgdmlld0JveD0iMCAwIDUxMiA1MTIiPjxwYXRoIGQ9Ik0yNTYgNTEyQTI1NiAyNTYgMCAxIDAgMjU2IDBhMjU2IDI1NiAwIDEgMCAwIDUxMnpNMTc1IDE3NWM5LjQtOS40IDI0LjYtOS40IDMzLjkgMGw0NyA0NyA0Ny00N2M5LjQtOS40IDI0LjYtOS40IDMzLjkgMHM5LjQgMjQuNiAwIDMzLjlsLTQ3IDQ3IDQ3IDQ3YzkuNCA5LjQgOS40IDI0LjYgMCAzMy45cy0yNC42IDkuNC0zMy45IDBsLTQ3LTQ3LTQ3IDQ3Yy05LjQgOS40LTI0LjYgOS40LTMzLjkgMHMtOS40LTI0LjYgMC0zMy45bDQ3LTQ3LTQ3LTQ3Yy05LjQtOS40LTkuNC0yNC42IDAtMzMuOXoiLz48L3N2Zz4=");
   width: 1em;
@@ -250,6 +257,12 @@ body {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  transition: all 0.3s ease;
+}
+.labelsearch.remove {
+  opacity: 0;
+  width: 0;
+  padding: 0;
 }
 .labelsearch__title {
   font-size: 0.875em;

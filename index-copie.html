@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les petits plats</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+    <header class="header">
+        <img class="header__logo" src="/assets/images/logo.svg" alt="Les petits plats">
+        <h1 class="header__title">Cherchez parmi plus de 1500 recettes <br>du quotidien, simples et délicieuses</h1>
+        <div class="header__search">
+            <input class="header__search-input" type="text" placeholder="Rechercher une recette, un ingrédient, ...">
+            <button class="header__search-button">
+                <svg class="header__search-icon">
+                    <use xlink:href="/assets/images/icons.svg#magnifying-glass"></use>
+                </svg>
+            </button>
+        </div>
+    </header>
+    <main class="main">
+        <section class="search-container">
+            <div class="search-dropdowns">
+                <!-- liste déroulante de recherche -->
+                <div class="search-dropdown active">
+                    <button class="search-dropdown__button">Ingrédients</button>
+                    <div class="search-dropdown__input-container">
+                        <div class="search-dropdown__menu">
+                            <input class="search-dropdown__input" type="text">
+                            <button class="search-dropdown__reset-button" type="reset">
+                                <svg class="search-dropdown__input-icon">
+                                    <use xlink:href="/assets/images/icons.svg#xmark"></use>
+                                </svg>
+                            </button>
+                            <button class="search-dropdown__search-button" type="submit">
+                                <svg class="search-dropdown__input-icon">
+                                    <use xlink:href="/assets/images/icons.svg#magnifying-glass"></use>
+                                </svg>
+                            </button>
+                        </div>
+                        <ul class="search-dropdown__list">
+                            <li  class="search-dropdown__item">Jus de citron</li>
+                            <li class="search-dropdown__item">Glaçons</li>
+                            <li class="search-dropdown__item">Tomate</li>
+                            <li class="search-dropdown__item active">Poulet</li>
+                            <li class="search-dropdown__item">Poivron rouge</li>
+                            <li class="search-dropdown__item">Lorem, ipsum dolor sit amet consectetur adipisicing elit. </li>
+                            <li class="search-dropdown__item">Vinaigrette</li>
+                            <li class="search-dropdown__item">Gruyère râpé</li>
+                            <li class="search-dropdown__item">Oeuf</li>
+                            <li class="search-dropdown__item">Crème liquide</li>
+                            <li class="search-dropdown__item">Crème de coco</li>
+                            <li class="search-dropdown__item">Thon Rouge</li>
+                            <li class="search-dropdown__item">Carotte</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- liste déroulante de recherche -->
+                <div class="search-dropdown">
+                    <button class="search-dropdown__button">Ingrédients</button>
+                </div>
+
+                <!-- liste déroulante de recherche -->
+                <div class="search-dropdown">
+                    <button class="search-dropdown__button">Ingrédients</button>
+                </div>
+
+            </div>
+            <h2 class="search-results-count">150 recettes</h2>
+        </section>
+
+        <!--  -->
+        <section class="labelsearch-container">
+            <h2 class="visually-hidden">Recherche de Labels</h2>
+
+            <div class="labelsearch">
+                <span class="labelsearch__title">Crème de coco</span>
+                <button class="labelsearch__close-button">
+                    <svg class="labelsearch__close-icon">
+                        <use xlink:href="/assets/images/icons.svg#xmark"></use>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="labelsearch">
+                <span class="labelsearch__title">Lorem ipsum dolor sit amet consectetur adipisicing elit</span>
+                <button class="labelsearch__close-button">
+                    <svg class="labelsearch__close-icon">
+                        <use xlink:href="/assets/images/icons.svg#xmark"></use>
+                    </svg>
+                </button>
+            </div>
+
+
+        </section>
+
+        <!-- Liste des recettes -->
+        <section class="recipes-list">
+            <h2 class="visually-hidden">Liste des Recettes</h2>
+            
+            <!-- Card -->
+            <article class="recipe">
+                <div class="recipe__image-container">
+                    <img class="recipe__picture" src="/assets/images/photos/Recette01.jpg" alt="">
+                    <div class="recipe__time">10 min</div>
+                </div>
+                <div class="recipe__content">
+                    <h3 class="recipe__content--title">Limonade de Coco</h3>
+                    <div class="recipe__content-section">
+                        <h4 class="recipe__content--subtitle">Recette</h4>
+                        <p class="recipe__content--description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab voluptatum, dolores sint quae deserunt dicta laboriosam facere modi fugiat iusto voluptates asperiores quos atque quod cum! Minima molestiae at a.</p>
+                    </div>
+                    <div class="recipe__content-section">
+                        <h4 class="recipe__content--subtitle">Ingrédients</h4>
+                        <div class="recipe__ingredients-container">
+                            <div class="recipe__ingredient">
+                                <p class="recipe__ingredient--title">Lait de coco</p>
+                                <p class="recipe__ingredient--quantity">400ml</p>
+                            </div>
+                            <div class="recipe__ingredient">
+                                <p class="recipe__ingredient--title">Crème de coco</p>
+                                <p class="recipe__ingredient--quantity">4 cuillères</p>
+                            </div>
+                            <div class="recipe__ingredient">
+                                <p class="recipe__ingredient--title">Glaçons</p>
+                                <p class="recipe__ingredient--quantity">2</p>
+                            </div>
+                            <div class="recipe__ingredient">
+                                <p class="recipe__ingredient--title">Jus de citron</p>
+                                <p class="recipe__ingredient--quantity">2</p>
+                            </div>
+                            <div class="recipe__ingredient">
+                                <p class="recipe__ingredient--title">Sucre</p>
+                                <p class="recipe__ingredient--quantity">20g</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card -->
+            <article class="recipe">
+                <div class="recipe__image-container">
+                    <img class="recipe__picture" src="/assets/images/photos/Recette01.jpg" alt="">
+                    <div class="recipe__time">10 min</div>
+                </div>
+                <div class="recipe__content">
+                    <h3 class="recipe__content--title">Limonade de Coco</h3>
+                    <div class="recipe__content-section">
+                        <h4 class="recipe__content--subtitle">Recette</h4>
+                        <p class="recipe__content--description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab voluptatum, dolores sint quae deserunt dicta laboriosam facere modi fugiat iusto voluptates asperiores quos atque quod cum! Minima molestiae at a.</p>
+                    </div>
+                    <div class="recipe__content-section">
+                        <h4 class="recipe__content--subtitle">Ingrédients</h4>
+                        <div class="recipe__ingredients-container">
+                            <div class="recipe__ingredient">
+                                <p class="recipe__ingredient--title">Lait de coco</p>
+                                <p class="recipe__ingredient--quantity">400ml</p>
+                            </div>
+                            <div class="recipe__ingredient">
+                                <p class="recipe__ingredient--title">Crème de coco</p>
+                                <p class="recipe__ingredient--quantity">4 cuillères</p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card -->
+            <article class="recipe">
+                <div class="recipe__image-container">
+                    <img class="recipe__picture" src="/assets/images/photos/Recette01.jpg" alt="">
+                    <div class="recipe__time">10 min</div>
+                </div>
+                <div class="recipe__content">
+                    <h3 class="recipe__content--title">Limonade de Coco</h3>
+                    <div class="recipe__content-section">
+                        <h4 class="recipe__content--subtitle">Recette</h4>
+                        <p class="recipe__content--description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab voluptatum, dolores sint quae deserunt dicta laboriosam facere modi fugiat iusto voluptates asperiores quos atque quod cum! Minima molestiae at a.</p>
+                    </div>
+                    <div class="recipe__content-section">
+                        <h4 class="recipe__content--subtitle">Ingrédients</h4>
+                        <div class="recipe__ingredients-container">
+                            <div class="recipe__ingredient">
+                                <p class="recipe__ingredient--title">Lait de coco</p>
+                                <p class="recipe__ingredient--quantity">400ml</p>
+                            </div>
+                            <div class="recipe__ingredient">
+                                <p class="recipe__ingredient--title">Crème de coco</p>
+                                <p class="recipe__ingredient--quantity">4 cuillères</p>
+                            </div>
+                            <div class="recipe__ingredient">
+                                <p class="recipe__ingredient--title">Glaçons</p>
+                                <p class="recipe__ingredient--quantity">2</p>
+                            </div>
+                            <div class="recipe__ingredient">
+                                <p class="recipe__ingredient--title">Jus de citron</p>
+                                <p class="recipe__ingredient--quantity">2</p>
+                            </div>
+                            <div class="recipe__ingredient">
+                                <p class="recipe__ingredient--title">Sucre</p>
+                                <p class="recipe__ingredient--quantity">20g</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card -->
+            <article class="recipe">
+                <div class="recipe__image-container">
+                    <img class="recipe__picture" src="/assets/images/photos/Recette01.jpg" alt="">
+                    <div class="recipe__time">10 min</div>
+                </div>
+                <div class="recipe__content">
+                    <h3 class="recipe__content--title">Limonade de Coco</h3>
+                    <div class="recipe__content-section">
+                        <h4 class="recipe__content--subtitle">Recette</h4>
+                        <p class="recipe__content--description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab voluptatum, dolores sint quae deserunt dicta laboriosam facere modi fugiat iusto voluptates asperiores quos atque quod cum! Minima molestiae at a.</p>
+                    </div>
+                    <div class="recipe__content-section">
+                        <h4 class="recipe__content--subtitle">Ingrédients</h4>
+                        <div class="recipe__ingredients-container">
+                            <div class="recipe__ingredient">
+                                <p class="recipe__ingredient--title">Lait de coco</p>
+                                <p class="recipe__ingredient--quantity">400ml</p>
+                            </div>
+                            <div class="recipe__ingredient">
+                                <p class="recipe__ingredient--title">Crème de coco</p>
+                                <p class="recipe__ingredient--quantity">4 cuillères</p>
+                            </div>
+                            <div class="recipe__ingredient">
+                                <p class="recipe__ingredient--title">Glaçons</p>
+                                <p class="recipe__ingredient--quantity">2</p>
+                            </div>
+                            <div class="recipe__ingredient">
+                                <p class="recipe__ingredient--title">Jus de citron</p>
+                                <p class="recipe__ingredient--quantity">2</p>
+                            </div>
+                            <div class="recipe__ingredient">
+                                <p class="recipe__ingredient--title">Sucre</p>
+                                <p class="recipe__ingredient--quantity">20g</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card -->
+            <article class="recipe">
+                <div class="recipe__image-container">
+                    <img class="recipe__picture" src="/assets/images/photos/Recette01.jpg" alt="">
+                    <div class="recipe__time">10 min</div>
+                </div>
+                <div class="recipe__content">
+                    <h3 class="recipe__content--title">Limonade de Coco</h3>
+                    <div class="recipe__content-section">
+                        <h4 class="recipe__content--subtitle">Recette</h4>
+                        <p class="recipe__content--description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab voluptatum, dolores sint quae deserunt dicta laboriosam facere modi fugiat iusto voluptates asperiores quos atque quod cum! Minima molestiae at a.</p>
+                    </div>
+                    <div class="recipe__content-section">
+                        <h4 class="recipe__content--subtitle">Ingrédients</h4>
+                        <div class="recipe__ingredients-container">
+                            <div class="recipe__ingredient">
+                                <p class="recipe__ingredient--title">Lait de coco</p>
+                                <p class="recipe__ingredient--quantity">400ml</p>
+                            </div>
+                            <div class="recipe__ingredient">
+                                <p class="recipe__ingredient--title">Crème de coco</p>
+                                <p class="recipe__ingredient--quantity">4 cuillères</p>
+                            </div>
+                            <div class="recipe__ingredient">
+                                <p class="recipe__ingredient--title">Glaçons</p>
+                                <p class="recipe__ingredient--quantity">2</p>
+                            </div>
+                            <div class="recipe__ingredient">
+                                <p class="recipe__ingredient--title">Jus de citron</p>
+                                <p class="recipe__ingredient--quantity">2</p>
+                            </div>
+                            <div class="recipe__ingredient">
+                                <p class="recipe__ingredient--title">Sucre</p>
+                                <p class="recipe__ingredient--quantity">20g</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            
+
+        </section>
+    </main>
+    
+</body>
+</html>

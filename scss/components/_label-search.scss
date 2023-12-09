@@ -15,6 +15,13 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    transition: all 0.3s ease;
+
+    &.remove {
+        opacity: 0;
+        width: 0;
+        padding: 0;
+    }
 
     &__title {
         font-size: em(14);
