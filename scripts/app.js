@@ -1,11 +1,19 @@
+
 /** 
  *  Les petits plats 
  *  Projet 7
  *  Décembre 2023
 */
 
-import { recipes } from "/data/recipes.js";
+import { recipes as recipesData } from "/data/recipes.js";
 import { SearchDropdown } from "./components/searchDropdown.js";
+import { RecipeSearchManager } from "./components/recipeSearchManager.js";
+import { Recipe } from "./components/recipe.js";
+
+/* eslint-disable no-unused-vars */
+export const ingredientsDropdown = new SearchDropdown(recipesData, "ingredients");
+export const appliancesDropdown = new SearchDropdown(recipesData, "appliances");
+export const ustensilsDropdown = new SearchDropdown(recipesData, "ustensils");
 
 export let tagList = {
 	ingredients: [],
@@ -13,47 +21,37 @@ export let tagList = {
 	ustensils: []
 };
 
-const ingredientsList = getUniqueSortedItems(recipes, "ingredients");
-const ingredientsDropdown = new SearchDropdown(ingredientsList, "ingredients");
-ingredientsDropdown.displaySearchDropdown();
+recipesData.sort((a, b) => {
+	return a.name.localeCompare(b.name, "fr", { sensitivity: "base" });
+});
 
-const appliancesList = getUniqueSortedItems(recipes, "appliances");
-const appliancesDropdown = new SearchDropdown(appliancesList, "appliances");
-appliancesDropdown.displaySearchDropdown();
+const allRecipes = [];
 
-const ustensilsList = getUniqueSortedItems(recipes, "ustensils");
-const ustensilsDropdown = new SearchDropdown(ustensilsList, "ustensils");
-ustensilsDropdown.displaySearchDropdown();
+await createRecipe(recipesData);
 
-
+// initialisation de la recherche
+//export const searchManager = new RecipeSearchManager(recipesData);
+export const searchManager = new RecipeSearchManager(allRecipes);
 
 
+async function createRecipe(recipesData) {
 
+	recipesData.forEach(recipe => {
 
-
-/**
- * Récupère et retourne un tableau trié d'éléments uniques 
- * (ingrédients, appareils ou ustensiles) à partir d'un tableau de recettes.
- */
-function getUniqueSortedItems(recipes, key) {
-	const itemsSet = new Set();
-
-	recipes.forEach(recipe => {
-		if (key === "ingredients") {
-			recipe.ingredients.forEach(item => itemsSet.add(item.ingredient.toLowerCase()));
-		} else if (key === "appliances") {
-			itemsSet.add(recipe.appliance.toLowerCase());
-		} else if (key === "ustensils") {
-			recipe.ustensils.forEach(item => itemsSet.add(item.toLowerCase()));
-		}
+		allRecipes.push(new Recipe(recipe));
+		
 	});
-
-	return Array.from(itemsSet).sort((a, b) => a.localeCompare(b, "fr", { sensitivity: "base" }));
 }
-  
 
 
+async function initApp() {
+
+	//console.log(allRecipes);
+	
+
+}
 
 
-
+// Démarrage de l'application
+initApp();
 

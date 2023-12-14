@@ -18,19 +18,20 @@
 .search-dropdown {
 
     width: 195px;
-    //max-height: 315px;
     background-color: $white;
     border-radius: 11px;
-    height: 56px;
+    //height: 56px;
+    max-height: 56px;
     overflow: hidden;
-    transition: all 0.3s;
+    transition: max-height 0.3s;
 
     @include mobile {
         width: 100%;
     }
 
     &.active {
-        height: 315px;
+        max-height: 315px;
+        //height: max-content;
     }
 
     &__button {
@@ -124,6 +125,7 @@
     &__reset-button {
         @extend .search-dropdown__search-button;
         right: 35px;
+        display: none;
     }
 
 

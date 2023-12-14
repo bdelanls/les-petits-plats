@@ -1,6 +1,6 @@
-import { tagList } from "../app.js";
+import { searchManager } from "../app.js";
 
-export class LabelSearchTags {
+export class TagManager {
 
 	constructor (name, category) {
 
@@ -59,13 +59,15 @@ export class LabelSearchTags {
 				tagElement.remove();
 			}, 300);
 
-			// Supprimer le tag de tagList
-			const index = tagList[this.category].indexOf(this.name);
+			// Supprimer le tag de selectedTags
+			const index = searchManager.selectedTags[this.category].indexOf(this.name);
 			if (index > -1) {
-				tagList[this.category].splice(index, 1);
+				searchManager.selectedTags[this.category].splice(index, 1);
 			}
 
 			this.updateDropdown();
+
+			searchManager.updateFilteredRecipes();
 		}
 
 	}

@@ -126,9 +126,9 @@ body {
   width: 195px;
   background-color: #ffffff;
   border-radius: 11px;
-  height: 56px;
+  max-height: 56px;
   overflow: hidden;
-  transition: all 0.3s;
+  transition: max-height 0.3s;
 }
 @media only screen and (max-width: 768px) {
   .search-dropdown {
@@ -136,7 +136,7 @@ body {
   }
 }
 .search-dropdown.active {
-  height: 315px;
+  max-height: 315px;
 }
 .search-dropdown__button {
   width: 100%;
@@ -210,6 +210,7 @@ body {
 }
 .search-dropdown__reset-button {
   right: 35px;
+  display: none;
 }
 .search-dropdown__list {
   max-height: 200px;
@@ -484,6 +485,9 @@ body {
   padding: 8px 15px;
   background-color: #FFD15B;
   border-radius: 20px;
+}
+.recipe__time.hide {
+  display: none;
 }
 .recipe__content {
   padding: 25px;
