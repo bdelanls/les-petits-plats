@@ -431,10 +431,14 @@ body {
 .search-container .search-results-count {
   font-family: "Anton", sans-serif;
   font-size: 1.3125em;
+  height: 56px;
+  display: flex;
+  align-items: center;
 }
 @media only screen and (max-width: 768px) {
   .search-container .search-results-count {
     margin-bottom: 15px;
+    height: max-content;
   }
 }
 
@@ -442,6 +446,7 @@ body {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  transition: all 0.3s;
 }
 
 .recipes-list {

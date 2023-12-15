@@ -36,9 +36,13 @@
     .search-results-count {
         font-family: $anton;
         font-size: em(21);
+        height: 56px;
+        display: flex;
+        align-items: center;
 
         @include mobile {
             margin-bottom: 15px;
+            height: max-content;
         }
     }
 }
@@ -47,6 +51,7 @@
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    transition: all .3s;
 
 }
 

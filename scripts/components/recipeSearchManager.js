@@ -1,4 +1,4 @@
-import { ingredientsDropdown, appliancesDropdown, ustensilsDropdown } from "../app.js";
+import { ingredientsDropdown, appliancesDropdown, ustensilsDropdown, renderRecipes } from "../app.js";
 
 
 export class RecipeSearchManager {
@@ -58,25 +58,12 @@ export class RecipeSearchManager {
 		
 		// affiche le nombre de recettes
 		const searchResultCount = document.querySelector(".search-results-count");
-		let numberOfRecipes = this.filteredRecipes.length;
-		searchResultCount.innerHTML = `${numberOfRecipes} ${numberOfRecipes > 1 ? "recettes" : "recette"}`;
+		let numberRecipes = this.filteredRecipes.length;
+		searchResultCount.innerHTML = `${numberRecipes} ${numberRecipes > 1 ? "recettes" : "recette"}`;
 
 		// affiche les recettes
-		const recipeslist = document.querySelector(".recipes-list");
-		recipeslist.innerHTML ="";
-
-		console.log("début");
-		let recipesHTML = "";
-
-		this.filteredRecipes.forEach( recipe => {
-			//console.log(recipe);
-			//recipeslist.innerHTML += recipe.getRecipe();
-
-			recipesHTML +=  recipe.getRecipe();
-		});
-
-		recipeslist.innerHTML = recipesHTML;
-		console.log("fin");
+		//renderRecipes(this.filteredRecipes);
+		renderRecipes.displayRecipes(this.filteredRecipes);
 		
 
 	}

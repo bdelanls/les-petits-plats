@@ -3,55 +3,61 @@
  *  Les petits plats 
  *  Projet 7
  *  Décembre 2023
-*/
+ */
 
-import { recipes as recipesData } from "/data/recipes.js";
+
+import { loadJson } from "./utils/loadJson.js";
 import { SearchDropdown } from "./components/searchDropdown.js";
 import { RecipeSearchManager } from "./components/recipeSearchManager.js";
 import { Recipe } from "./components/recipe.js";
+import { RenderRecipes } from "./components/renderRecipes.js";
 
+// Chargement des données des recettes depuis un fichier JSON
+const recipesData = await loadJson("../data/recipes.json");
+
+// Création des menus déroulants pour les ingrédients, appareils et ustensiles
 /* eslint-disable no-unused-vars */
 export const ingredientsDropdown = new SearchDropdown(recipesData, "ingredients");
 export const appliancesDropdown = new SearchDropdown(recipesData, "appliances");
 export const ustensilsDropdown = new SearchDropdown(recipesData, "ustensils");
 
+// Initialisation de la liste des tags sélectionnés
 export let tagList = {
 	ingredients: [],
 	appliances: [],
 	ustensils: []
 };
 
-recipesData.sort((a, b) => {
-	return a.name.localeCompare(b.name, "fr", { sensitivity: "base" });
-});
 
+// Stockage de toutes les recettes sous forme d'objets Recipe
 const allRecipes = [];
-
 await createRecipe(recipesData);
 
-// initialisation de la recherche
-//export const searchManager = new RecipeSearchManager(recipesData);
+// Initialisation du rendu des recettes
+export const renderRecipes = new RenderRecipes();
+
+// Initialisation du gestionnaire de recherche de recettes
 export const searchManager = new RecipeSearchManager(allRecipes);
+searchManager.updateFilteredRecipes();
 
 
+
+
+
+/**
+ * Crée des objets Recipe pour chaque recette dans les données fournies
+ * et les ajoute à la liste allRecipes.
+ */
 async function createRecipe(recipesData) {
 
-	recipesData.forEach(recipe => {
+	recipesData.sort((a, b) => {
+		return a.name.localeCompare(b.name, "fr", { sensitivity: "base" });
+	});
 
+	recipesData.forEach(recipe => {
 		allRecipes.push(new Recipe(recipe));
-		
 	});
 }
 
 
-async function initApp() {
-
-	//console.log(allRecipes);
-	
-
-}
-
-
-// Démarrage de l'application
-initApp();
 

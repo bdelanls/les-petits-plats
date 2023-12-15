@@ -21,7 +21,7 @@ export class Recipe {
 		<article class="recipe">
                 <div class="recipe__image-container">
                     <img class="recipe__picture" src="/assets/images/photos/${this.image}" alt="">
-                    <div class="recipe__time">${this.time > 0 ? this.time + "min" : "- -"}</div>
+                    <div class="recipe__time">${this.time > 0 ? this.time + " min" : "- -"}</div>
                 </div>
                 <div class="recipe__content">
                     <h3 class="recipe__content--title">${this.name}</h3>

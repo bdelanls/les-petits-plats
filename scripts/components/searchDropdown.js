@@ -1,7 +1,9 @@
 import { TagManager } from "./tagManager.js";
 import { searchManager } from "../app.js";
 
-
+/**
+ * Classe pour gérer les menus déroulants de recherche.
+ */
 export class SearchDropdown {
 
 	constructor (data, name) {
@@ -15,6 +17,9 @@ export class SearchDropdown {
 		this.getSearchDropdown();
 	}
 
+	/**
+     * Récupère le titre en fonction du nom du menu déroulant.
+     */
 	getTitle() {
 		switch (this.name) {
 		case "ingredients":
@@ -26,19 +31,31 @@ export class SearchDropdown {
 		}
 	}
 
+	/**
+     * Met à jour les éléments visibles dans le menu déroulant en fonction des données filtrées.
+     */
 	getUpdateItems(updateData, inputValue = this.inputValue) {
 		this.visibleData = updateData;
 		updateData = this.getSortedItems(updateData);
 		const listItems = document.querySelectorAll(`#${this.name}-dropdown li`);
 
+		// Fonction pour normaliser une chaîne de caractères 
+		// en supprimant les accents et en mettant en minuscule
+		const normalizeString = (str) => {
+			return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+		};
+
 		listItems.forEach(item => {
-			if (updateData.map(u => u.toLowerCase()).includes(item.textContent.toLowerCase())) {
+			const normalizedItem = normalizeString(item.textContent);
+			const normalizedInput = normalizeString(inputValue);
+
+			if (updateData.map(u => normalizeString(u)).includes(normalizedItem)) {
 				item.removeAttribute("style");
 			} else {
 				item.setAttribute("style", "display: none");
 			}
 
-			if (inputValue && !item.textContent.toLowerCase().includes(inputValue.toLowerCase())) {
+			if (inputValue && !normalizedItem.includes(normalizedInput)) {
 				item.setAttribute("style", "display: none");
 			}
 		});
@@ -46,6 +63,9 @@ export class SearchDropdown {
 
 	
 
+	/**
+     * Trie les éléments et supprime les doublons.
+     */
 	getSortedItems(data) {
 		const itemsSet = new Set();
 		data.forEach(recipe => {
@@ -62,13 +82,20 @@ export class SearchDropdown {
 	}
 
 
+	/**
+     * Crée et affiche le menu déroulant de recherche.
+     */
 	getSearchDropdown() {
 		const searchDropdowns = document.querySelector(".search-dropdowns");
+		const dropdownDiv = this.createDropdownContainer();
+		const searchButton = this.createSearchButton(dropdownDiv);
+		const inputContainer = this.createInputField();
 
-		// Crée le conteneur du menu déroulant
-		const dropdownDiv = document.createElement("div");
-		dropdownDiv.className = "search-dropdown";
-		dropdownDiv.id = this.name + "-dropdown";
+		
+		dropdownDiv.appendChild(searchButton);
+		dropdownDiv.appendChild(inputContainer);
+		searchDropdowns.appendChild(dropdownDiv);
+
 
 		// Écouteur d'événements pour détecter les clics en dehors du menu déroulant
 		document.addEventListener("click", (event) => {
@@ -80,7 +107,65 @@ export class SearchDropdown {
 		});
 
 
-		// Crée le bouton
+		const listUl = document.createElement("ul");
+		listUl.className = "search-dropdown__list";
+
+		this.data.forEach(elem => {
+			const listItem = document.createElement("li");
+			listItem.className = "search-dropdown__item";
+			listItem.textContent = elem.charAt(0).toUpperCase() + elem.slice(1);
+
+			// Ajoute un écouteur d'événements click à chaque élément listItem
+			listItem.addEventListener("click", () => {
+
+				const tagName = listItem.textContent;
+
+				if ( searchManager.selectedTags[this.name].includes(tagName)) {
+					searchManager.removeTag(this.name, tagName);
+					listItem.classList.remove("active");
+
+					// Supprimer le tag du DOM
+					document.querySelector(`.labelsearch[data-tag-name="${this.name}-${tagName}"]`)?.remove();
+
+				} else {
+					searchManager.addTag(this.name, tagName);
+					listItem.classList.add("active");
+
+					new TagManager(tagName, this.name);
+				}
+			
+			});
+			
+			listUl.appendChild(listItem);
+		});
+		
+		
+		inputContainer.appendChild(listUl);
+
+		dropdownDiv.appendChild(inputContainer);
+
+		// Ajouter le conteneur au DOM
+		searchDropdowns.appendChild(dropdownDiv);
+		
+	}
+
+	/**
+     * Crée le conteneur du menu déroulant.
+     */
+	createDropdownContainer() {
+		// Crée le conteneur du menu déroulant
+		const dropdownDiv = document.createElement("div");
+		dropdownDiv.className = "search-dropdown";
+		dropdownDiv.id = this.name + "-dropdown";
+
+		return dropdownDiv;
+	}
+
+	/**
+     * Crée le bouton de recherche.
+     */
+	createSearchButton(dropdownDiv) {
+		
 		const searchButton = document.createElement("button");
 		searchButton.className = "search-dropdown__button";
 		searchButton.textContent = this.title;
@@ -90,13 +175,16 @@ export class SearchDropdown {
 			this.open = !this.open;
 			dropdownDiv.classList.toggle("active");
 		});
+
+		return searchButton;
 		
+	}
 
-
-		// Ajouter le bouton au conteneur
-		dropdownDiv.appendChild(searchButton);
-
-		// Créer et ajouter le reste du HTML
+	/**
+     * Crée le champ de saisie pour la recherche.
+     */
+	createInputField() {
+		
 		const inputContainer = document.createElement("div");
 		inputContainer.className = "search-dropdown__input-container";
 
@@ -127,7 +215,8 @@ export class SearchDropdown {
 		// écouteur sur le input
 		input.addEventListener("keyup", event => {
 
-			
+			let numOfChars = input.value.length;
+			numOfChars >=1 ? resetButton.setAttribute("style", "display: block") : resetButton.removeAttribute("style");
 
 			// on vérifie l'entrée
 			if (validateInput(input.value)) {
@@ -135,8 +224,7 @@ export class SearchDropdown {
 				input.removeAttribute("style");
 				this.inputValue = input.value;
 
-				let numOfChars = input.value.length;
-				numOfChars >=1 ? resetButton.setAttribute("style", "display: block") : resetButton.removeAttribute("style");
+				
 				
 				if (input.value.length >= 3) {
 					//
@@ -154,6 +242,7 @@ export class SearchDropdown {
 		// écouteur sur le bouton reset
 		resetButton.addEventListener("click", () => {
 			input.value = "";
+			input.removeAttribute("style");
 			this.inputValue = "";
 			this.getUpdateItems(this.visibleData, "");
 		});
@@ -168,55 +257,8 @@ export class SearchDropdown {
 		menuDiv.appendChild(resetButton);
 		menuDiv.appendChild(searchButtonIcon);
 
-		const listUl = document.createElement("ul");
-		listUl.className = "search-dropdown__list";
-
-		this.data.forEach(elem => {
-			const listItem = document.createElement("li");
-			listItem.className = "search-dropdown__item";
-			listItem.textContent = elem.charAt(0).toUpperCase() + elem.slice(1);
-
-			// Ajoute un écouteur d'événements click à chaque élément listItem
-			listItem.addEventListener("click", () => {
-
-				const tagName = listItem.textContent;
-
-				if ( searchManager.selectedTags[this.name].includes(tagName)) {
-					searchManager.removeTag(this.name, tagName);
-					listItem.classList.remove("active");
-
-					// Supprimer le tag du DOM
-					document.querySelector(`.labelsearch[data-tag-name="${this.name}-${tagName}"]`)?.remove();
-
-				} else {
-					searchManager.addTag(this.name, tagName);
-					listItem.classList.add("active");
-
-					new TagManager(tagName, this.name);
-				}
-
-				console.log(searchManager.selectedTags);
-			
-			});
-			
-			listUl.appendChild(listItem);
-		});
-		
-
 		inputContainer.appendChild(menuDiv);
-		inputContainer.appendChild(listUl);
 
-		dropdownDiv.appendChild(inputContainer);
-
-		
-
-		// Ajouter le conteneur au DOM
-		searchDropdowns.appendChild(dropdownDiv);
-		
+		return inputContainer;
 	}
-
-
-
-
-
 }
