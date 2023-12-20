@@ -16,7 +16,7 @@ import { RenderRecipes } from "./components/renderRecipes.js";
 const recipesData = await loadJson("../data/recipes.json");
 
 // Création des menus déroulants pour les ingrédients, appareils et ustensiles
-/* eslint-disable no-unused-vars */
+// eslint-disable no-unused-vars 
 export const ingredientsDropdown = new SearchDropdown(recipesData, "ingredients");
 export const appliancesDropdown = new SearchDropdown(recipesData, "appliances");
 export const ustensilsDropdown = new SearchDropdown(recipesData, "ustensils");
@@ -50,10 +50,14 @@ searchManager.updateFilteredRecipes();
  */
 async function createRecipe(recipesData) {
 
+	// Trie les données des recettes par ordre alphabétique de leurs noms.
+	// Utilise la méthode localeCompare pour gérer les caractères accentués
 	recipesData.sort((a, b) => {
 		return a.name.localeCompare(b.name, "fr", { sensitivity: "base" });
 	});
 
+	// Crée une nouvelle instance de la classe Recipe pour chaque recette
+	// et l'ajoute dans le tableau allRecipes.
 	recipesData.forEach(recipe => {
 		allRecipes.push(new Recipe(recipe));
 	});

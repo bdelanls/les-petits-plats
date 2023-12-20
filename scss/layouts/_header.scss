@@ -78,6 +78,10 @@
             font-weight: 400;
             font-size: em(16);
 
+            // &:focus {
+            //     border: 2px solid $primary;
+            // }
+
             &:focus-visible {
                 outline: none;
             }
@@ -114,6 +118,34 @@
 
             }
         }
+
+        &__reset-button {
+            position: absolute;
+            top: 9px;
+            right: 65px;
+            border: none;
+            background-color: $white;
+            cursor: pointer;
+            padding: 0;
+            height: 50px;
+            width: 50px;
+            display: none;
+
+            & .header__search__input-icon{
+                height: 25px;
+                width: 25px;
+                color: $grey;
+                transition: all 200ms;
+            }
+
+            &:hover .header__search__input-icon{
+                color: $primary;
+            }
+
+            
+        }
+
+       
 
 
 

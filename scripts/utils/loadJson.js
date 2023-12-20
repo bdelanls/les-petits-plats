@@ -1,5 +1,8 @@
 
-
+/**
+ * Charge des données JSON à partir d'un fichier spécifié.
+ * 
+ */
 export async function loadJson(dataFile) {
 	try {
 		const response = await fetch(dataFile);

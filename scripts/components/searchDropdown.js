@@ -67,19 +67,40 @@ export class SearchDropdown {
      * Trie les éléments et supprime les doublons.
      */
 	getSortedItems(data) {
-		const itemsSet = new Set();
+		
+		let items = [];
+
+		// Collecter tous les éléments
 		data.forEach(recipe => {
 			if (this.name === "ingredients") {
-				recipe.ingredients.forEach(item => itemsSet.add(item.ingredient.toLowerCase()));
+				recipe.ingredients.forEach(item => items.push(item.ingredient.toLowerCase()));
 			} else if (this.name === "appliances") {
-				itemsSet.add(recipe.appliance.toLowerCase());
+				items.push(recipe.appliance.toLowerCase());
 			} else if (this.name === "ustensils") {
-				recipe.ustensils.forEach(item => itemsSet.add(item.toLowerCase()));
+				recipe.ustensils.forEach(item => items.push(item.toLowerCase()));
 			}
 		});
-	
-		return Array.from(itemsSet).sort((a, b) => a.localeCompare(b, "fr", { sensitivity: "base" }));
+
+		// Trier les éléments
+		items.sort((a, b) => a.localeCompare(b, "fr", { sensitivity: "base" }));
+
+		// Gérer les doublons et les pluriels
+		for (let i = 0; i < items.length - 1; i++) {
+			
+			if (items[i] === items[i + 1] || items[i] === items[i + 1].replace(/s$/, "")) {
+				
+				items.splice(i + 1, 1); // Supprimer l'élément pluriel
+				i--; // Réajuster l'index après la suppression
+
+			}
+		}
+		
+		// Retourner la liste sans doublons
+		return items;
 	}
+
+
+
 
 
 	/**
@@ -113,6 +134,7 @@ export class SearchDropdown {
 		this.data.forEach(elem => {
 			const listItem = document.createElement("li");
 			listItem.className = "search-dropdown__item";
+			listItem.setAttribute("tabindex", "0");
 			listItem.textContent = elem.charAt(0).toUpperCase() + elem.slice(1);
 
 			// Ajoute un écouteur d'événements click à chaque élément listItem

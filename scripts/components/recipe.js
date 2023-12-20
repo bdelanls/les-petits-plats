@@ -20,8 +20,8 @@ export class Recipe {
 		let recipeHTML = `
 		<article class="recipe">
                 <div class="recipe__image-container">
-                    <img class="recipe__picture" src="/assets/images/photos/${this.image}" alt="">
-                    <div class="recipe__time">${this.time > 0 ? this.time + " min" : "- -"}</div>
+                    <img class="recipe__picture" src="/assets/images/photos/${this.image}" alt="${this.name}">
+                    <div class="recipe__time">${this.time > 0 ? this.time + " min" : "..."}</div>
                 </div>
                 <div class="recipe__content">
                     <h3 class="recipe__content--title">${this.name}</h3>
