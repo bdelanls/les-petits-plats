@@ -1,5 +1,7 @@
 
-
+/**
+ * Classe représentant une recette.
+ */
 export class Recipe {
 
 	constructor (data) {
@@ -16,6 +18,9 @@ export class Recipe {
 
 	}
 
+	/**
+     * Génère le HTML pour afficher la recette.
+     */
 	getRecipe() {
 		let recipeHTML = `
 		<article class="recipe">

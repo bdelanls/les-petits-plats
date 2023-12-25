@@ -11,9 +11,21 @@ export class RenderRecipes {
 		this.numberRecipes = 0;
 		this.filteredRecipes = [];
 		this.recipesHTML = "";
+		document.addEventListener("scroll", this.handleScroll.bind(this));
 
 	}
 
+	/**
+     * Gère l'événement de défilement pour ajouter des recettes lors du défilement infini.
+     */
+	handleScroll() {
+		// Vérifie si l'utilisateur est près du bas de la page
+		if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight -100)) {
+			if (this.visibleRecipes <= this.numberRecipes) {
+				this.addRecipes();
+			}
+		}
+	}
 
 	/**
      * Affiche les recettes filtrées sur la page.
@@ -30,20 +42,24 @@ export class RenderRecipes {
 
 		// Affiche les recettes suivant un Infinite Scrolling
 		this.addRecipes();
-		
-		
-		// Écouteur sur le scroll de la page
-		document.addEventListener("scroll", () => {
 
-			// Vérifie si l'utilisateur est près du bas de la page
-			if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight -100)) {
-		
-				if (this.visibleRecipes <= this.numberRecipes) {
-					this.addRecipes();
-				}
-			}
-		});
+		// affiche le nombre de recettes
+		this.displayNumberRecipes();
 
+	}
+
+	/**
+     * Affiche un message lorsqu'aucune recette ne correspond à la recherche.
+     */
+	displayNoRecipe(searchTerm) {
+
+		this.numberRecipes = 0;
+
+		this.recipesHTML = "<h2 class=\"recipes-list__no-recipe\">Aucune recette ne contient \"" + searchTerm + "\" vous pouvez chercher « tarte aux pommes », « poisson », etc.";
+		this.recipeslist.innerHTML = this.recipesHTML;
+
+		// affiche le nombre de recettes
+		this.displayNumberRecipes();
 	}
 
 	/**
@@ -65,6 +81,14 @@ export class RenderRecipes {
 		// maj du nombre de recettes visible sur la page
 		this.visibleRecipes = this.recipeslist.children.length;
 
+	}
+
+	/**
+     * Affiche le nombre de recettes trouvées.
+     */
+	displayNumberRecipes() {
+		const searchResultCount = document.querySelector(".search-results-count");
+		searchResultCount.innerHTML = `${this.numberRecipes} ${this.numberRecipes > 1 ? "recettes" : "recette"}`;
 	}
 
 }

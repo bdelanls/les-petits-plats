@@ -21,13 +21,6 @@ export const ingredientsDropdown = new SearchDropdown(recipesData, "ingredients"
 export const appliancesDropdown = new SearchDropdown(recipesData, "appliances");
 export const ustensilsDropdown = new SearchDropdown(recipesData, "ustensils");
 
-// Initialisation de la liste des tags sélectionnés
-export let tagList = {
-	ingredients: [],
-	appliances: [],
-	ustensils: []
-};
-
 
 // Stockage de toutes les recettes sous forme d'objets Recipe
 const allRecipes = [];
@@ -38,7 +31,7 @@ export const renderRecipes = new RenderRecipes();
 
 // Initialisation du gestionnaire de recherche de recettes
 export const searchManager = new RecipeSearchManager(allRecipes);
-searchManager.updateFilteredRecipes();
+searchManager.filterRecipes();
 
 
 

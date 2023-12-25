@@ -60,6 +60,16 @@
     flex-flow: row wrap;
     gap: 50px 5%;
     margin-top: 50px;
+
+    &__no-recipe {
+        padding: 22px 18px;
+        border-radius: 11px;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.5);
+        text-align: center;
+        line-height: 120%;
+        box-shadow: 0px 4px 24px 10px rgba(0, 0, 0, 0.1);
+    }
 }
 
 
@@ -68,7 +78,7 @@
     background-color: $white;
     overflow: hidden;
     border-radius: 21px;
-    box-shadow: 0px 4px 34px 30px rgba(0, 0, 0, 0.04);
+    box-shadow: 0px 4px 24px 10px rgba(0, 0, 0, 0.1);
 
     @include tablet {
         width: 47%;

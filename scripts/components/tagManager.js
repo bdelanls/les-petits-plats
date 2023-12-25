@@ -1,5 +1,8 @@
 import { searchManager } from "../app.js";
 
+/**
+ * Classe pour gérer la création et la suppression des tags de recherche.
+ */
 export class TagManager {
 
 	constructor (name, category) {
@@ -10,7 +13,9 @@ export class TagManager {
 		
 	}
 
-
+	/**
+     * Crée un élément de tag et l'ajoute au DOM.
+     */
 	createTag() {
 
 		const labelsearchContainer = document.querySelector(".labelsearch-container");
@@ -35,6 +40,9 @@ export class TagManager {
 
 	}
 
+	/**
+     * Met à jour le menu déroulant pour refléter l'état actuel des tags sélectionnés.
+     */
 	updateDropdown() {
 		const listItems = document.querySelectorAll(`#${this.category}-dropdown .search-dropdown__item`);
 
@@ -49,6 +57,10 @@ export class TagManager {
 
 	}
 
+	
+	/**
+     * Supprime le tag du DOM et met à jour la liste des tags sélectionnés.
+     */
 	deleteTag() {
 		const tagElement = document.querySelector(`.labelsearch[data-tag-name="${this.category}-${this.name}"]`);
 		if (tagElement) {
@@ -67,12 +79,9 @@ export class TagManager {
 
 			this.updateDropdown();
 
-			searchManager.updateFilteredRecipes();
+			searchManager.filterRecipes();
 		}
 
 	}
-
-
-	
 
 }
