@@ -53,51 +53,8 @@ export class RecipeSearchManager {
 
 	/**
      * Recherche des recettes en fonction du terme de recherche saisi.
+	 * Algorithme 2 - programmation fonctionnelle
      */
-	/*
-	
-	
-	/*
-	searchByInput() {
-		let results = [];
-		let termLower = this.searchTerm.toLowerCase();
-
-		for (let i = 0; i < this.filteredRecipes.length; i++) {
-			let recipe = this.filteredRecipes[i];
-			let foundInIngredients = false;
-
-			// Vérifier dans les ingrédients
-			for (let j = 0; j < recipe.ingredients.length; j++) {
-				if (recipe.ingredients[j].ingredient.toLowerCase().includes(termLower)) {
-					foundInIngredients = true;
-					break; 
-				}
-			}
-
-			// Si trouvé dans les ingrédients, ajouter à la liste des résultats
-			if (foundInIngredients) {
-				results.push(recipe);
-				continue;
-			}
-
-			// Vérifier dans le titre
-			if (recipe.name.toLowerCase().includes(termLower)) {
-				results.push(recipe);
-				continue;
-			}
-
-			// Vérifier dans la description
-			if (recipe.description.toLowerCase().includes(termLower)) {
-				results.push(recipe);
-			}
-		}
-
-		return results;
-	}
-	*/
-
-	
-
 	searchByInput() {
 		let termLower = this.searchTerm.toLowerCase();
 	
