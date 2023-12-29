@@ -48,16 +48,7 @@ export class Recipe {
 			
 		});
 
-		recipeHTML += `		<div class="recipe__ingredient">
-                                <p class="recipe__ingredient--title">Lait de coco</p>
-                                <p class="recipe__ingredient--quantity">400ml</p>
-                            </div>
-                            <div class="recipe__ingredient">
-                                <p class="recipe__ingredient--title">Crème de coco</p>
-                                <p class="recipe__ingredient--quantity">4 cuillères</p>
-                            </div>
-                            
-                        </div>
+		recipeHTML += `	</div>
                     </div>
                 </div>
             </article>`;

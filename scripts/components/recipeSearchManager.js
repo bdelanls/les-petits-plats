@@ -54,23 +54,65 @@ export class RecipeSearchManager {
 	/**
      * Recherche des recettes en fonction du terme de recherche saisi.
      */
+	/*
+	
+	
+	/*
 	searchByInput() {
-
+		let results = [];
 		let termLower = this.searchTerm.toLowerCase();
-		let foundRecipes = new Set();
 
-		// Recherche dans les titres, descriptions et ingrédients
-		this.filteredRecipes.forEach(recipe => {
-			if (recipe.name.toLowerCase().includes(termLower) || 
-            recipe.description.toLowerCase().includes(termLower) || 
-            recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(termLower))) {
-				foundRecipes.add(recipe);
+		for (let i = 0; i < this.filteredRecipes.length; i++) {
+			let recipe = this.filteredRecipes[i];
+			let foundInIngredients = false;
+
+			// Vérifier dans les ingrédients
+			for (let j = 0; j < recipe.ingredients.length; j++) {
+				if (recipe.ingredients[j].ingredient.toLowerCase().includes(termLower)) {
+					foundInIngredients = true;
+					break; 
+				}
 			}
-		});
 
-		return Array.from(foundRecipes);
+			// Si trouvé dans les ingrédients, ajouter à la liste des résultats
+			if (foundInIngredients) {
+				results.push(recipe);
+				continue;
+			}
 
+			// Vérifier dans le titre
+			if (recipe.name.toLowerCase().includes(termLower)) {
+				results.push(recipe);
+				continue;
+			}
+
+			// Vérifier dans la description
+			if (recipe.description.toLowerCase().includes(termLower)) {
+				results.push(recipe);
+			}
+		}
+
+		return results;
 	}
+	*/
+
+	
+
+	searchByInput() {
+		let termLower = this.searchTerm.toLowerCase();
+	
+		return this.filteredRecipes.filter(recipe => {
+			// Vérifier dans le titre ou la description
+			if (recipe.name.toLowerCase().includes(termLower) || recipe.description.toLowerCase().includes(termLower)) {
+				return true;
+			}
+	
+			// Vérifier dans les ingrédients
+			return recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(termLower));
+		});
+	}
+
+	
 
 	/**
      * Recherche des recettes en fonction des tags sélectionnés.
@@ -159,7 +201,7 @@ export class RecipeSearchManager {
 		// Si aucun des critères n'est rempli
 		return true;
 	}
-	
+
 
 	/**
      * Met à jour les menus déroulants en fonction des recettes filtrées.
