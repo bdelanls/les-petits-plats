@@ -53,11 +53,8 @@ export class RecipeSearchManager {
 
 	/**
      * Recherche des recettes en fonction du terme de recherche saisi.
+	 * Algorithme 1 : boucles natives
      */
-	/*
-	
-	
-	/*
 	searchByInput() {
 		let results = [];
 		let termLower = this.searchTerm.toLowerCase();
@@ -94,23 +91,7 @@ export class RecipeSearchManager {
 
 		return results;
 	}
-	*/
-
 	
-
-	searchByInput() {
-		let termLower = this.searchTerm.toLowerCase();
-	
-		return this.filteredRecipes.filter(recipe => {
-			// Vérifier dans le titre ou la description
-			if (recipe.name.toLowerCase().includes(termLower) || recipe.description.toLowerCase().includes(termLower)) {
-				return true;
-			}
-	
-			// Vérifier dans les ingrédients
-			return recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(termLower));
-		});
-	}
 
 	
 
