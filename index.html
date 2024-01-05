@@ -13,7 +13,7 @@
         <h1 class="header__title">Cherchez parmi plus de 1500 recettes <br>du quotidien, simples et délicieuses</h1>
         <div class="header__search">
             <label for="search-input" class="visually-hidden">Rechercher une recette</label>
-            <input id="search-input" class="header__search-input" tabindex="0" type="text" placeholder="Rechercher une recette, un ingrédient, ...">
+            <input id="search-input" class="header__search-input" tabindex="0" type="text" maxlength="45" placeholder="Rechercher une recette, un ingrédient, ...">
             <button class="header__search__reset-button" type="reset">
                 <svg class="header__search__input-icon">
                     <use xlink:href="/assets/images/icons.svg#xmark"></use>
@@ -24,6 +24,7 @@
                     <use xlink:href="/assets/images/icons.svg#magnifying-glass"></use>
                 </svg>
             </button>
+            <div class="header__search-error"></div>
         </div>
     </header>
     <main class="main">

@@ -424,6 +424,18 @@ body {
 .header__search__reset-button:hover .header__search__input-icon {
   color: #FFD15B;
 }
+.header__search-error {
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  color: #ffffff;
+  line-height: 120%;
+}
+@media only screen and (max-width: 768px) {
+  .header__search-error {
+    bottom: -50px;
+  }
+}
 
 .main {
   max-width: 1440px;

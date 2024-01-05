@@ -52,13 +52,18 @@ export class RenderRecipes {
      * Affiche un message lorsqu'aucune recette ne correspond à la recherche.
      */
 	displayNoRecipe(searchTerm) {
-
 		this.numberRecipes = 0;
-
-		this.recipesHTML = "<h2 class=\"recipes-list__no-recipe\">Aucune recette ne contient \"" + searchTerm + "\" vous pouvez chercher « tarte aux pommes », « poisson », etc.";
-		this.recipeslist.innerHTML = this.recipesHTML;
-
-		// affiche le nombre de recettes
+	
+		// Créer un élément h2
+		const messageElement = document.createElement("h2");
+		messageElement.className = "recipes-list__no-recipe";
+		messageElement.textContent = `Aucune recette ne contient "${searchTerm}" vous pouvez chercher « tarte aux pommes », « poisson », etc.`;
+	
+		// Effacer le contenu actuel et ajouter le nouveau message
+		this.recipeslist.innerHTML = "";
+		this.recipeslist.appendChild(messageElement);
+	
+		// Affiche le nombre de recettes
 		this.displayNumberRecipes();
 	}
 

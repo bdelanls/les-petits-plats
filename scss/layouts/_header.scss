@@ -145,6 +145,18 @@
             
         }
 
+        &-error {
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            color: $white;
+            line-height: 120%;
+
+            @include mobile {
+                bottom: -50px;
+            }
+        }
+
        
 
 

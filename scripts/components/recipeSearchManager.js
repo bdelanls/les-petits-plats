@@ -30,11 +30,16 @@ export class RecipeSearchManager {
 			let numOfChars = this.searchTerm.length;
 			numOfChars >=1 ? resetButton.setAttribute("style", "display: block") : resetButton.removeAttribute("style");
 
-			if (this.searchTerm.length >= 3) {
-				//
+			// validation des entrées
+			let validInput = true;
+			if (this.searchTerm != "") {
+				validInput = this.validateInput();
+			}
+
+			if (this.searchTerm.length >= 3 && validInput) {
 				this.filterRecipes();
 
-			} else if (event.key === "Backspace" && this.searchTerm.length <= 2) {
+			} else if (event.key === "Backspace" && this.searchTerm.length <= 2 && validInput) {
 				this.searchTerm = "";
 				this.filterRecipes();
 			}
@@ -45,10 +50,23 @@ export class RecipeSearchManager {
 		resetButton.addEventListener("click", () => {
 			this.searchTerm =  searchInput.value = "";
 			resetButton.removeAttribute("style");
+			this.validateInput();
 			this.filterRecipes();
 		});
+	}
 
+	validateInput() {
+		const inputRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ0-9\s\-_°,.]+$/;
+		let valid = true;
+		const searchError = document.querySelector(".header__search-error");
+		searchError.innerHTML = "";
 
+		if (!inputRegex.test(this.searchTerm) && this.searchTerm != "") {
+			valid = false;
+			searchError.innerHTML = "Oups ! Il semble que votre recherche contienne des caractères non autorisés.";
+		}
+
+		return valid;
 	}
 
 	/**
